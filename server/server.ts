@@ -4,6 +4,10 @@ import { Server } from "socket.io";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 import type { Data } from "../src/shared/types";
+import {
+  ClientToServerEvents,
+  ServerToClientEvents,
+} from "../src/shared/socketEvents";
 
 // Hilfsfunktionen um __dirname in ESM zu simulieren
 const __filename = fileURLToPath(import.meta.url);
@@ -11,7 +15,7 @@ const __dirname = dirname(__filename);
 
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server, {
+const io = new Server<ClientToServerEvents, ServerToClientEvents>(server, {
   cors: {
     origin: "http://localhost:5173",
   },

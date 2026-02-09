@@ -1,7 +1,16 @@
 import { useEffect } from "react";
-export function useSetupSocket(socket: any) {
+import type { Socket } from "socket.io-client";
+import type {
+  ServerToClientEvents,
+  ClientToServerEvents,
+} from "../socketEvents";
+export function useSetupSocket(
+  socket: Socket<ServerToClientEvents, ClientToServerEvents>,
+) {
   useEffect(() => {
     socket.connect();
-    return () => socket.disconnect();
+    return () => {
+      socket.disconnect();
+    };
   }, []);
 }
