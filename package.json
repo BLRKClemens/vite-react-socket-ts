@@ -13,6 +13,8 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.1.17",
     "express": "^5.2.1",
+    "motion": "^12.35.0",
+    "nuqs": "^2.8.9",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "socket.io": "^4.8.1",
